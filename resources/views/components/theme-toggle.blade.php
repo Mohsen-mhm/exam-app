@@ -1,4 +1,4 @@
-<div class="relative" x-data="{ toggleThemeDropDown: false }" @click.outside="toggleThemeDropDown = false" @close.stop="toggleThemeDropDown = false">
+<div class="absolute top-5 left-5" x-data="{ toggleThemeDropDown: false }" @click.outside="toggleThemeDropDown = false" @close.stop="toggleThemeDropDown = false">
     <button id="toggleTheme" @click="toggleThemeDropDown = ! toggleThemeDropDown"
             class="relative me-3 inline-flex transition items-center text-sm font-medium text-center text-yellow-600 hover:text-yellow-700 focus:outline-none dark:hover:text-yellow-600 dark:text-yellow-400"
             type="button">

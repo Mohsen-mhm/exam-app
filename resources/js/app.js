@@ -6,9 +6,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     setTimeout(function () {
         pageLoader.classList.add('hidden');
-    }, 500);
-
+    }, 1000);
 })
+
 document.addEventListener('livewire:init', () => {
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const systemThemeOption = document.getElementById('system-theme-option');
