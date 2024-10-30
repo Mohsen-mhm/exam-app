@@ -23,6 +23,11 @@ class Login extends Component
         if ($user) {
             if (Hash::check($this->password, $user->password)) {
                 Auth::login($user);
+                $this->flash('success', 'Successfully signed in!', [
+                    'position' => 'top-end',
+                    'timer' => 3000,
+                    'toast' => true,
+                ]);
                 $this->redirectRoute('home');
             }
             $this->alert('error', 'Invalid credentials!', [
