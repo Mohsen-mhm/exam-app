@@ -10,15 +10,19 @@
             <form wire:submit="login">
                 @csrf
                 <div class="flex w-full max-w-xs flex-col gap-1 text-neutral-600 dark:text-neutral-300">
-                    <label for="textInputDefault" class="w-fit pl-0.5 text-sm">Name</label>
-                    <input id="textInputDefault" type="text" wire:model="email"
+                    <label for="textInputDefault" class="w-fit pl-0.5 text-sm">Email</label>
+                    <input id="textInputDefault" type="email" wire:model="email" required
                            class="w-full rounded-md border border-indigo-300 bg-neutral-50 px-2 py-2 text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400 disabled:cursor-not-allowed disabled:opacity-75 dark:border-indigo-700 dark:bg-neutral-900/50 dark:focus-visible:outline-indigo-800"
-                           name="name" placeholder="Enter your name" autocomplete="name"/>
+                           name="email" placeholder="Enter your email" autocomplete="email"/>
+                    @error('email')
+                    <span class="mt-2 text-red-700 dark:text-red-500">{{ $message }}</span>
+                    @enderror
                 </div>
                 <div class="flex w-full max-w-xs flex-col gap-1 text-neutral-600 dark:text-neutral-300 mt-4">
                     <label for="passwordInput" class="w-fit pl-0.5 text-sm">Password</label>
                     <div x-data="{ showPassword: false }" class="relative">
                         <input :type="showPassword ? 'text' : 'password'" id="passwordInput" wire:model="password"
+                               required
                                class="w-full rounded-md border border-indigo-300 bg-neutral-50 px-2 py-2 text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400 disabled:cursor-not-allowed disabled:opacity-75 dark:border-indigo-700 dark:bg-neutral-900/50 dark:focus-visible:outline-indigo-800"
                                name="password" autocomplete="current-password" placeholder="Enter your password"/>
                         <button type="button" @click="showPassword = !showPassword"
@@ -40,6 +44,14 @@
                             </svg>
                         </button>
                     </div>
+                    @error('password')
+                    <span class="mt-2 text-red-700 dark:text-red-500">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="flex w-full max-w-xs flex-col gap-1 text-neutral-600 dark:text-neutral-300 text-sm mt-4">
+                    <span>Don't have an account? <a
+                            class="text-indigo-600 dark:text-indigo-500 hover:text-indigo-700 dark:hover:text-indigo-400 transition"
+                            href="{{ route('register') }}">Sign up</a></span>
                 </div>
                 <div class="flex w-full max-w-xs flex-col gap-1 text-neutral-600 dark:text-neutral-300 mt-4">
                     <button type="submit"
