@@ -10,9 +10,12 @@
 <body class="relative antialiased bg-white dark:bg-gray-800 min-h-dvh">
 <x-loader/>
 <x-theme-toggle/>
-{{ $slot }}
+
+<div class="container">
+    {{ $slot }}
+</div>
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<x-livewire-alert::scripts />
+<x-livewire-alert::scripts/>
 </body>
 </html>
