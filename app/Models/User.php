@@ -60,7 +60,27 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class, 'role_user');
     }
 
-    public function hasRole($role)
+    public function attempts(): HasMany
+    {
+        return $this->hasMany(ExamAttempt::class);
+    }
+
+    public function notifs(): HasMany
+    {
+        return $this->hasMany(Notification::class);
+    }
+
+    public function questions(): HasMany
+    {
+        return $this->hasMany(Question::class, 'created_by');
+    }
+
+    public function reports(): HasMany
+    {
+        return $this->hasMany(Report::class);
+    }
+
+    public function hasRole($role): bool
     {
         if (is_string($role))
             return $this->roles->contains('name', $role);
